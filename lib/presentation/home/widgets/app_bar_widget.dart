@@ -6,6 +6,7 @@ import 'package:personal_portfolio/core/buttons_styles.dart';
 import 'package:personal_portfolio/core/colors.dart';
 import 'package:personal_portfolio/core/dimensions.dart';
 import 'package:personal_portfolio/core/texts_styles.dart';
+import 'package:personal_portfolio/presentation/home/home_page.dart';
 import 'package:personal_portfolio/presentation/home/widgets/hover_button_animation_widget.dart';
 
 AppBar customAppBar(BuildContext context) => AppBar(
@@ -51,7 +52,7 @@ AppBar customAppBar(BuildContext context) => AppBar(
 List<Widget> _desktopActions = [
   HoverButtonAnimationWidget(
     child: TextButton(
-      onPressed: () {},
+      onPressed: () => _navigateToSection(aboutMeSectionKey),
       style: ButtonsStyles.appBarButton,
       child: const AutoSizeText(
         '1. About me',
@@ -63,7 +64,7 @@ List<Widget> _desktopActions = [
   ),
   HoverButtonAnimationWidget(
     child: TextButton(
-      onPressed: () {},
+      onPressed: () => _navigateToSection(experienceSectionKey),
       style: ButtonsStyles.appBarButton,
       child: const AutoSizeText(
         '2. Experience',
@@ -75,7 +76,7 @@ List<Widget> _desktopActions = [
   ),
   HoverButtonAnimationWidget(
     child: TextButton(
-      onPressed: () {},
+      onPressed: () => _navigateToSection(projectsSectionKey),
       style: ButtonsStyles.appBarButton,
       child: const AutoSizeText(
         '3. Projects',
@@ -87,7 +88,7 @@ List<Widget> _desktopActions = [
   ),
   HoverButtonAnimationWidget(
     child: TextButton(
-      onPressed: () {},
+      onPressed: () => _navigateToSection(contactSectionKey),
       style: ButtonsStyles.appBarButton,
       child: const AutoSizeText(
         '4. Contact',
@@ -116,3 +117,9 @@ List<Widget> _desktopActions = [
   ),
   const SizedBox(width: 24),
 ];
+
+void _navigateToSection(GlobalKey sectionKey) => Scrollable.ensureVisible(
+      sectionKey.currentContext!,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeIn,
+    );

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portfolio/core/colors.dart';
 import 'package:personal_portfolio/core/dimensions.dart';
+import 'package:personal_portfolio/presentation/home/sections/about_me_section.dart';
+import 'package:personal_portfolio/presentation/home/sections/contact_section.dart';
+import 'package:personal_portfolio/presentation/home/sections/experience_section.dart';
+import 'package:personal_portfolio/presentation/home/sections/projects_section.dart';
 import 'package:personal_portfolio/presentation/home/widgets/app_bar_widget.dart';
 import 'package:personal_portfolio/presentation/home/widgets/drawer_widget.dart';
 import 'package:personal_portfolio/presentation/home/sections/header_section.dart';
 import 'package:personal_portfolio/presentation/home/widgets/mail_column_widget.dart';
 import 'package:personal_portfolio/presentation/home/widgets/social_column_widget.dart';
+
+var aboutMeSectionKey = GlobalKey();
+var experienceSectionKey = GlobalKey();
+var projectsSectionKey = GlobalKey();
+var contactSectionKey = GlobalKey();
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -39,45 +48,17 @@ class _Body extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.isMobileScreen(context) ? 30 : 10),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 70,
                     ),
-                    const HeaderSection(),
-                    Container(
-                      width: double.infinity,
-                      height: 650,
-                      color: Colors.transparent,
-                      child: const Center(
-                        child: Text('01. About me'),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 650,
-                      color: Colors.transparent,
-                      child: const Center(
-                        child: Text('02. Experience'),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 650,
-                      color: Colors.transparent,
-                      child: const Center(
-                        child: Text('03. Projects'),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 650,
-                      color: Colors.transparent,
-                      child: const Center(
-                        child: Text('04. Contact'),
-                      ),
-                    ),
+                    HeaderSection(),
+                    AboutMeSection(),
+                    ExperienceSection(),
+                    ProjectsSection(),
+                    ContactSection(),
                   ],
                 ),
               ),

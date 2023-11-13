@@ -6,6 +6,7 @@ import 'package:personal_portfolio/core/buttons_styles.dart';
 import 'package:personal_portfolio/core/colors.dart';
 import 'package:personal_portfolio/core/dimensions.dart';
 import 'package:personal_portfolio/core/texts_styles.dart';
+import 'package:personal_portfolio/presentation/home/home_page.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({super.key});
@@ -104,6 +105,12 @@ List<Widget> _mapButtons(
     '3. Projects',
     '4. Contact',
   ];
+  final keys = [
+    aboutMeSectionKey,
+    experienceSectionKey,
+    projectsSectionKey,
+    contactSectionKey,
+  ];
 
   for (int i = 0; i < 5; i++) {
     buttons.add(
@@ -141,6 +148,7 @@ List<Widget> _mapButtons(
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
+                      _navigateToSection(keys[i]);
                     },
                     style: ButtonsStyles.appBarButton,
                     child: Row(
@@ -169,3 +177,9 @@ List<Widget> _mapButtons(
 
   return buttons;
 }
+
+void _navigateToSection(GlobalKey sectionKey) => Scrollable.ensureVisible(
+      sectionKey.currentContext!,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeIn,
+    );
